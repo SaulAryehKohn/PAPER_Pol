@@ -25,8 +25,10 @@ hpm_extract_facet.py:
 	- make a cutout from the healpix map in a sine projection
 
 
-Some compressed imaging data: /data4/raw_data/Sep2011/psa819, 820
-Preliminary calibrations in capo/dfm
+Some compressed imaging data: 
+
+	- /data4/raw_data/Sep2011/psa819, 820
+	- Preliminary calibrations in capo/dfm
 
 
 TAKE CARE:
