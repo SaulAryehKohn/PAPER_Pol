@@ -40,6 +40,6 @@ TAKE CARE:
 READ:
 
 	- TMS (edition 2+) chapters on geometry, chapters 3 and 6 (generally)
-	- Haymaker, Bregman and Sault: 5 papers on "understanding radio polarimetry"... PAPER breaks most of their assumptions 
+	- Hamaker, Bregman and Sault: 5 papers on "understanding radio polarimetry"... PAPER breaks most of their assumptions 
 	- DFMs polarization papers
-	- Perley & Smirnoff: NeqTree shows how useful polarization calibration can be
+	- Perley & Smirnoff: MeqTree shows how useful polarization calibration can be
