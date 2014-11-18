@@ -5,16 +5,11 @@
 #$ -N FINE_IMG
 #$ -o grid_output/
 #$ -l h_vmem=1G
+echo 'here we go!'
+source /usr/global/paper/CanopyVirtualEnvs/PAPER_Polar/bin/activate
 
-source /usr/global/paper/bin/virtualenvwrapper.sh
-workon sak-test
-
-#export PATH = $PATH:/data2/home/saulkohn/githubs/PAPER_Pol
-#LD_LIBRARY_PATH = $LD_LIBRARY_PATH:where the lib is
-#export LD_LIBRARY_PATH 
-
-CAL=psa819_v007
-FILES=`/data2/home/saulkohn/githubs/PAPER_Pol/pull_args.py $*`
+CAL=psa819_v008
+FILES=`/data2/home/saulkohn/Polar_gits/PAPER_Pol/pull_args.py $*`
 
 FSTART=120
 FSTOP=170
@@ -22,6 +17,7 @@ NCHAN=$(($FSTOP-$FSTART))
 df=$(($NCHAN/32))
 
 for FILE in $FILES; do
+    echo $FILE
     echo ===============================
     for i in `seq 0 31`; do
         echo =========

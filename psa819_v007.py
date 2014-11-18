@@ -183,7 +183,7 @@ def get_aa(freqs):
         except(KeyError): amp = 1.
         phsoff = [[dly[0],0.],[dly[1],0.]]
         antennas.append(
-                a.fit.Antenna(pos[0],pos[1],pos[2], beam, dp=True, phsoff=phsoff, amp=amp, bp_r=bp_r, lat=prms['loc'][0] )
+                a.pol.Antenna(pos[0],pos[1],pos[2], beam, dp=True, phsoff=phsoff, amp=amp, bp_r=bp_r, lat=prms['loc'][0] )
                 )
     aa = a.fit.AntennaArray(prms['loc'], antennas)
     return aa
