@@ -201,13 +201,34 @@ src_prms = {
     # 490Jy, 'ra':'03:21:56.99','dec':'-37:10:01.20','mfreq':0.154,'index':-0.77
     # 260Jy, 'ra':'03:24:42.49','dec':'-37:16:10.51','mfreq':0.154,'index':-0.77
     # 2Jy, 'ra':'03:23:27.016','dec':'-37:11:10.98','mfreq':0.154,'index':-1.1
-    'J0522-36':{'jys':96.,'ra':'5:23:43','dec':'-36:22:48','mfreq':0.150,'index':-1.},
-    'J0625-53':{'jys':60.,'ra':'6:25:11','dec':'-53:39:31','mfreq':0.150,'index':-1.},
+    
+    'forone':{'jys':225., 'ra':'03:21:56.99','dec':'-37:10:01.20','mfreq':0.154,'index':-0.77},
+    'fortwo':{'jys':125., 'ra':'03:24:42.49','dec':'-37:16:10.51','mfreq':0.154,'index':-0.77},
+    'forcore':{'jys':110., 'ra':'03:23:27.016','dec':'-37:11:10.98','mfreq':0.154,'index':-1.1},
+    'forcan1':{'jys':10., 'ra':'03:26:45.074','dec':'-38:15:53.84','mfreq':0.150,'index':-1.1},
+	'forcan2':{'jys':10., 'ra':'03:32:17.647','dec':'-38:20:26.59','mfreq':0.150,'index':-1.1},
+	'forcan3':{'jys':10., 'ra':'03:27:27.376','dec':'-37:30:54.94','mfreq':0.150,'index':-1.1},
+	'forcan4':{'jys':10., 'ra':'03:27:27.910','dec':'-36:17:27.25','mfreq':0.150,'index':-1.1},
+	'forcan5':{'jys':10., 'ra':'03:25:02.662','dec':'-36:12:45.43','mfreq':0.150,'index':-1.1},
+	'forcan6':{'jys':10., 'ra':'03:19:27.169','dec':'-36:11:00.60','mfreq':0.150,'index':-1.1},
+	'forcan7':{'jys':10., 'ra':'03:17:19.564','dec':'-36:03:39.63','mfreq':0.150,'index':-1.1},
+	'forcan8':{'jys':10., 'ra':'03:16:38.686','dec':'-36:46:24.14','mfreq':0.150,'index':-1.1},
+	'forcan9':{'jys':10., 'ra':'03:16:37.053','dec':'-37:59:41.74','mfreq':0.150,'index':-1.1},
+	'forcan10':{'jys':11., 'ra':'03:19:41.051','dec':'-38:05:50.03','mfreq':0.150,'index':-1.1},
+	'forcan11':{'jys':10., 'ra':'03:22:10.575','dec':'-38:12:37.19','mfreq':0.150,'index':-1.1},
+	'forcan12':{'jys':50., 'ra':'03:21:21.268','dec':'-37:11:10.90','mfreq':0.150,'index':-1.1},
+	'forcan13':{'jys':50., 'ra':'03:21:21.268','dec':'-36:46:29.70','mfreq':0.150,'index':-1.1},
+	'forcan14':{'jys':50., 'ra':'03:23:42.476','dec':'-36:46:29.70','mfreq':0.150,'index':-1.1},
+	'forcan15':{'jys':50., 'ra':'03:21:41.236','dec':'-36:49:28.54','mfreq':0.150,'index':-1.1},
+	'source1':{'jys':150., 'ra':'05:19:32.461','dec':'-37:18:01.80','mfreq':0.150,'index':-1.1},
+	
 }
 
 def get_catalog(srcs=None, cutoff=None, catalogs=['helm','misc']):
     '''Return a catalog containing the listed sources.'''
-    specials = ['pic','forA','forB','J0445-23','J0522-36','J0625-53','forone','fortwo','forcore']
+    specials = ['pic','forA','forB','J0445-23','J0522-36','J0625-53','forone','fortwo','forcore','forcan1',
+    'forcan2','forcan3','forcan4','forcan5','forcan6','forcan7','forcan8','forcan9','forcan10','forcan11',
+    'forcan12','forcan13','forcan14','forcan15','source1']
     srclist =[]
     for c in catalogs:     
         this_srcs = generic_catalog.get_srcs(srcs=srcs,

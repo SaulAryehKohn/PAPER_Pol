@@ -2,23 +2,24 @@ IQUV image pipeline
 =====================
 batch_mk_df_images.sh:
 
-	- 4 snapshots per frequency
-	- 1 snapshot per time -- a combination of I, Q and U
+	- 4 snapshots per frequency, per time
+	- for a given time: xx, xy, yx, yy in <N> frequency bands
 	
 lin2stokes.py:
 
 	- keeps track of different weights for different beams
-	- rotates all frames into same basis for easy working
-	- 4 snapshots -> 4 *corrected* snapshots
+	- 4 new files per frequency, per time
+	- for a given time: I, Q, U, V in <N> frequency bands
 	
 QUrot.py:
 
 	- As the sky passes overhead, an original Q will rotate into U and vice-versa
-	- this corrects for LST changes, outputting Q, U, P=Q+U and a polarization-angle map
+	- this corrects for LST changes, outputting Q, U, P=Q+U (and a polarization-angle map??)
 	
 mk_snap_map.py:
 
 	- creates a "mosaic" healpix map
+	- TODO: needs to treat polarizations differently!!
 	
 hpm_extract_facet.py:
 
@@ -28,6 +29,8 @@ hpm_extract_facet.py:
 Some compressed imaging data: 
 
 	- /data4/raw_data/Sep2011/psa819, 820
+	- /data4/raw_data/Jul2011/psa74*
+		-- these two together should provide the entire Southern Hemisphere!
 	- Preliminary calibrations in capo/dfm
 
 

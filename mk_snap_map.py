@@ -61,9 +61,10 @@ for i, filename in enumerate(args):
         tx = tx.flatten()#.compress(valid)
         ty = ty.flatten()#.compress(valid)
         tz = tz.flatten()#.compress(valid)
-        bm_wgts = aa.ants[0].bm_response((tx,ty,tz), pol=opts.pol[0])
+	aa.ants[0].set_active_pol('x') #opts.pol(0) SK CHANGE THIS
+        bm_wgts = aa.ants[0].bm_response((tx,ty,tz))
         if opts.pol[0] == opts.pol[-1]: bm_wgts *= bm_wgts
-        else: bm_wgts *= aa.ants[0].bm_response((tx,ty,tz), pol=opts.pol[-1])
+        else: bm_wgts *= aa.ants[0].bm_response((tx,ty,tz))#, pol=opts.pol[-1])
         bm_wgts = n.abs(bm_wgts.squeeze())
         #bm_wgts = n.where(bm_wgts >= 0.1 , bm_wgts, 0)
         map_wgts = bm_wgts**2
