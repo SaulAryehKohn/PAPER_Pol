@@ -13,7 +13,7 @@ from pylab import *
 
 o = optparse.OptionParser()
 a.scripting.add_standard_options(o,cal=True)
-o.add_option('-f','--freq',dest='freq',default=0.15,ty='float',help='Frequency at which to set the beam')
+o.add_option('-f','--freq',dest='freq',default=0.15,type='float',help='Frequency at which to set the beam')
 opts,args = o.parse_args(sys.argv[1:])
 
 aa = a.cal.get_aa(opts.cal,0.001,opts.freq,1)
@@ -64,7 +64,7 @@ for ty in images:
                 A[p] = np.where( tz <= 0., 0., np.abs(A[p]))
                 A[p] = A[p].reshape(im.shape)
                 A[p] = A[p].data
-	#weight by the appropriate beam
+		#weight by the appropriate beam
         for S in stokes:
             Sname = names[0]+S+names[1]
             print 'Writing',Sname
@@ -83,8 +83,8 @@ for ty in images:
             elif S == 'U': 
                 Sim = lin_images['xy'] + lin_images['yx']
             else: 
-                if ty == 'dbm': Sim = lin_images['xy']+lin_images['yx'] #U
-                else: Sim = lin_images['xy'] - lin_images['yx'] #Q
+                if ty == 'dbm': Sim = lin_images['xy']+lin_images['yx']
+                else: Sim = lin_images['xy'] - lin_images['yx']
 
             a.img.to_fits(Sname, Sim, clobber=True, object=kwds['object'], obs_date=kwds['obs_date'],
                         ra=kwds['ra'], dec=kwds['dec'], epoch=kwds['epoch'],

@@ -19,9 +19,12 @@ o.add_option('-m', '--map', dest='map',
     help='The skymap file to use.  If it exists, new data will be added to the map.  Othewise, the file will be created.')
 o.add_option('-f', '--freq', dest='freq', type='float', default=.150,
     help='The frequency to use for beam weighting')
+#o.add_option('-p', '--pol', dest='pol', type='string', default='I', help="Polarization ('I','Q','U','V')")
 o.add_option('--nside', dest='nside', type='int', default=256,
     help='NSIDE parameter for map, if creating a new file.')
 o.add_option('--nobeam',dest='nobeam',action='store_true',help="Don't multiply data by the beam")
+
+
 opts, args = o.parse_args(sys.argv[1:])
 
 aa = a.cal.get_aa(opts.cal, .001, opts.freq, 1)
@@ -61,7 +64,8 @@ for i, filename in enumerate(args):
         tx = tx.flatten()#.compress(valid)
         ty = ty.flatten()#.compress(valid)
         tz = tz.flatten()#.compress(valid)
-	aa.ants[0].set_active_pol('x') #opts.pol(0) SK CHANGE THIS
+        #aa.ants[0].set_active_pol(opts.pol) #opts.pol(0) SK CHANGE THIS
+        aa.ants[0].set_active_pol(opts.pol)
         bm_wgts = aa.ants[0].bm_response((tx,ty,tz))
         if opts.pol[0] == opts.pol[-1]: bm_wgts *= bm_wgts
         else: bm_wgts *= aa.ants[0].bm_response((tx,ty,tz))#, pol=opts.pol[-1])

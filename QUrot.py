@@ -1,6 +1,6 @@
 #! /usr/bin/env python 
 """
-Do the correct rotaiton between meaasured Q and U and intrinsic Q and U.
+Do the correct rotation between measured Q and U and intrinsic Q and U.
 """
 
 import numpy as np
@@ -38,10 +38,13 @@ for q_fit,u_fit in zip(Qfits,Ufits):
 
     #Calculating 
     X = a.pol.ParAng(LST-ra,dec,lat)
+    print X
     sX,cX = np.sin(2.*X),np.cos(2.*X)
 
-    Qint = cX*qimg - sX*uimg
-    Uint = cX*uimg + sX*qimg
+    #Qint = cX*qimg - sX*uimg
+    #Uint = cX*uimg + sX*qimg
+    Qint = cX*qimg + sX*uimg
+    Uint = cX*uimg - sX*qimg
     Pint = np.ma.sqrt(Qint**2 + Uint**2)
     Xint = 0.5*np.arctan2(Uint,Qint)
     #Housekeeping
