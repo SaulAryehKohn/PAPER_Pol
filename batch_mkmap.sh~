@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+FILES=`/data4/paper/sak/Polar_gits/PAPER_Pol/pull_args.py $*`
+
+for pol in I Q U V; do
+	mk_map.py -m

@@ -1,0 +1,37 @@
+#$ -S /bin/bash
+#$ -V
+#$ -cwd
+#$ -j y
+#$ -N LIN2STKS
+#$ -o grid_output/
+#$ -l h_vmem=2G
+#$ -t 1:20
+
+echo 'here we go!'
+source /usr/global/paper/CanopyVirtualEnvs/PAPER_Polar/bin/activate
+
+CAL=psa819_v008
+FILES=`/data4/paper/sak/Polar_gits/PAPER_Pol/pull_args.py $*`
+step=0.002
+FSTART=0.1295
+#call files as psa819/*FB0xx_0000.dim.fits
+
+for FILE in $FILES; do
+	NAME=${FILE:7:17}
+	echo =================
+	echo $NAME
+	echo =================
+	for (( i=0; $i<$(bc<<<"25"); i++ )); do
+		f=$(bc<<<"$step*$i + $FSTART")
+		echo python lin2stokes.py -C ${CAL} -f ${f} psa819/${NAME}.uvcRREs_FB${i}xx_0000.dim.fits \
+						    psa819/${NAME}.uvcRREs_FB${i}xy_0000.dim.fits \
+						    psa819/${NAME}.uvcRREs_FB${i}yx_0000.dim.fits \
+						    psa819/${NAME}.uvcRREs_FB${i}yy_0000.dim.fits
+
+		python lin2stokes.py -C ${CAL} -f ${f} psa819/${NAME}.uvcRREs_FB${i}xx_0000.dim.fits \
+						    psa819/${NAME}.uvcRREs_FB${i}xy_0000.dim.fits \
+						    psa819/${NAME}.uvcRREs_FB${i}yx_0000.dim.fits \
+						    psa819/${NAME}.uvcRREs_FB${i}yy_0000.dim.fits
+
+	done
+done
